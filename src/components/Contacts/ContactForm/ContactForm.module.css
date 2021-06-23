@@ -1,0 +1,20 @@
+.form {
+  display: inline-flex;
+  flex-direction: column;
+  border: 2px solid rgb(24, 23, 23);
+  padding: 20px;
+  width: 200px;
+}
+.btnStyle {
+  width: 100px;
+  margin: 15px auto;
+  background-color: rgb(122, 194, 146);
+  cursor: pointer;
+}
+
+.btnStyle:hover {
+  background-color: rgb(230, 57, 80);
+}
+.labelStyles{
+    color:crimson;
+}
