@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import ListItem from "../ListItem/ListItem";
 
+
 const ContactList = ({ items,  handleDelete }) => {
   return (
     <ul>

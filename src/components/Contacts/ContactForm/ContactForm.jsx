@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { v4 as uuid } from "uuid";
 import css from "./ContactForm.module.css";
 import { connect } from "react-redux";
 import { addNewContact } from "../../../redux/contacts/contacts.actions";
-
+import { v4 as uuidv4 } from "uuid";
 
 class ContactForm extends Component {
   static propTypes = {
@@ -13,7 +12,8 @@ class ContactForm extends Component {
   };
 
   state = {
-    term: "",
+    name: "",
+    number: "",
   };
 
   handleChange = (e) => {
@@ -22,40 +22,30 @@ class ContactForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { term } = this.state;
 
-    if (!term) {
-      alert("Поле не может быть пустым!");
-      return;
-    }
+    const { name } = this.state;
 
-    const isDuplicate = this.props.items.some((item) => item.title === term);
+    const isDuplicate = this.props.items.some((item) => item.name === name);
     if (isDuplicate) {
-      alert("Такоe имя уже существует " + term);
+      alert("Такоe имя уже существует " + name);
       return;
     }
-
-    const newContact = {
-      id: uuid(),
-      title: term,
-    };
-
-    this.props.addNewContact(newContact);
+    this.props.addNewContact({ ...this.state, id: uuidv4() });
   };
 
   render() {
     return (
       <>
-        <form className={css.form} onSubmit={this.onSubmit}>
+        <form className={css.form} onSubmit={this.handleSubmit}>
           <label htmlFor={css.labelStyles}>Name</label>
           <input
-            name="term"
+            name="name"
             type="text"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
             required
             onChange={this.handleChange}
-            value={this.state.term}
+            value={this.state.name}
           />
           <label htmlFor={css.labelStyles}>Number</label>
           <input

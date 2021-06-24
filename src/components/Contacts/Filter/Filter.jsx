@@ -30,7 +30,7 @@ const mapState = (state) => {
 };
 
 const mapDispatch = {
-  handleChange: filterChange,
+  handleChange: (e) => filterChange(e.target.value),
 };
 
 export default connect(mapState, mapDispatch)(Filter);
