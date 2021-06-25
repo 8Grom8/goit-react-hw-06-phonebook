@@ -5,7 +5,7 @@ const ListItem = ({ item, handleDelete }) => {
 
   return (
     <li>
-      <div className="flex justify-content-between">
+      <div>
         <span> { name }:{number}</span>
         <button onClick={handleDelete}>Delete</button>
       </div>
