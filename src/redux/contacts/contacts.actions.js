@@ -7,9 +7,7 @@ const FILTER_CHANGE = "contacts/filterChange";
 
 const addNewContact = createAction(ADD_NEW_CONTACT);
 
-const filterChange = createAction(FILTER_CHANGE, (payload) => ({
-  payload: payload,
-}));
+const filterChange = createAction(FILTER_CHANGE);
 
 const removeContact = createAction(REMOVE_CONTACT);
 
